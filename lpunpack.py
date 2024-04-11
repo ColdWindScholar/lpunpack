@@ -23,7 +23,7 @@ LP_SECTOR_SIZE = 512
 
 LP_TARGET_TYPE_LINEAR = 0
 LP_TARGET_TYPE_ZERO = 1
-
+LP_HEADER_FLAG_VIRTUAL_AB_DEVICE = 0x1
 LP_PARTITION_ATTR_READONLY = (1 << 0)
 LP_PARTITION_ATTR_SLOT_SUFFIXED = (1 << 1)
 LP_PARTITION_ATTR_UPDATED = (1 << 2)
@@ -345,8 +345,7 @@ class LpMetadataHeader(LpMetadataBase):
             self.header_size,
             self.header_checksum,
             self.tables_size,
-            self.tables_checksum
-
+            self.tables_checksum,
         ) = struct.unpack(self._fmt, buffer[0:self.size])
         self.flags = 0
 
